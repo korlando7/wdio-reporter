@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "chalk": "^2.3.0",
+    "chalk": "^2.3.0"
   },
   "devDependencies": {
     "webdriverio": "^4.9.9",
