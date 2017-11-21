@@ -32,13 +32,14 @@ class CustomReporter extends events.EventEmitter {
     });
 
     this.on('test:pass', (test) => {
+      log(chalk.green(`${this.getSymbols().ok} ${this.getBrowserName(test.cid)}: ${test.fullTitle}`));
       this.results[test.cid].passing += 1;
     });
 
     this.on('test:fail', (test) => {
       this.results[test.cid].failing += 1;
       const browser = this.getBrowserName(test.cid);
-      log(chalk.bgRed(`${browser}:`));
+      log(chalk.bgRed(`\n${this.getSymbols().error} ${browser}: ${test.fullTitle}`));
       log(chalk.red(`${test.err.type}
       ${test.err.stack}
       ${test.err.message}\n`));
@@ -60,11 +61,11 @@ class CustomReporter extends events.EventEmitter {
   }
 
   getTestResults() {
-    let message = '';
+    let message = `${chalk.bold.underline.magenta('\nResults\n')}`;
     Object.keys(this.results).forEach((result) => {
       const browserObj = this.results[result];
-      message += `${chalk.bgBlue(browserObj.browserName)}: 
-      ${chalk.green(`${browserObj.passing} passing`)}, ${chalk.red(`${browserObj.failing} failing`)}\n\n`;
+      message += `\n${chalk.bgBlue(browserObj.browserName)}: 
+      ${chalk.green(`${browserObj.passing} passing`)}, ${chalk.red(`${browserObj.failing} failing`)}\n`;
     });
 
     return message;
@@ -75,8 +76,7 @@ class CustomReporter extends events.EventEmitter {
   }
 
   getSymbols() {
-    const { symbols } = this.baseReporter;
-    return symbols;
+    return this.baseReporter.symbols;
   }
 
   getTestRunTime() {
