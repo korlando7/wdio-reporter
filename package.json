@@ -1,0 +1,23 @@
+{
+  "name": "kevin-reporter",
+  "version": "1.0.0",
+  "description": "custom reporter for webdriverio",
+  "main": "reporter.js",
+  "scripts": {
+    "test": "wdio wdio.conf.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^2.3.0",
+  },
+  "devDependencies": {
+    "webdriverio": "^4.9.9",
+    "wdio-mocha-framework": "^0.5.11",
+    "wdio-selenium-standalone-service": "0.0.9",
+    "eslint-plugin-webdriverio": "^1.0.1",
+    "eslint": "^4.11.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0"
+  }
+}

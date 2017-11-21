@@ -1,0 +1,10 @@
+{
+  "extends": "airbnb-base",
+  "plugins": [
+    "webdriverio"
+  ],
+  "env": {
+    "webdriverio/wdio": true,
+    "mocha": true
+  }
+}
